@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>메인페이지 입니다. - ver.yee</h1>
+<input type="button" value="글쓰기" onclick="location.href='/board/boardSave'"><br><br>
+<div th:if="${userName != ''}">
+    Logged in as : <span id="user" th:text="${userName}"></span>
+    <a href="/logout">Logout</a>
+</div>
+<div th:if="${userName == ''}">
+    <a href="/oauth2/authorization/google">Google Login</a>
+    <a href="/oauth2/authorization/naver">Naver Login</a>
+</div>
+<table border="1">
+    <thead>
+        <tr>
+            <th>게시글 번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>최종수정일</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${board}">
+        <td th:text="${item.id}"></td>
+        <td>
+            <a href="#" th:href="@{/board/boardDetail/{id} (id=${item.id})}" th:text="${item.title}"></a>
+        </td>
+        <td th:text="${item.author}"></td>
+        <td th:text="${item.modifiedDate}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

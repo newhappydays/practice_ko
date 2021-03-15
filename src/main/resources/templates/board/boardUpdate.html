@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>글수정 입니다.1</p>
+<br>
+<input type="hidden" id="id" placeholder="작성자" th:value="${board.id}"><br>
+<input type="text" id="title" placeholder="작성자" th:value="${board.author}"><br>
+<input type="text" id="author" placeholder="제목" th:value="${board.title}"><br>
+<textarea id="content" placeholder="내용" cols="20" rows="10">[[${board.content}]]</textarea><br>
+<input type="button" id="updateBtn" value="수정" onclick="board.update()">
+
+<script src="/js/board.js"></script>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

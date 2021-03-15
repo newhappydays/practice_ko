@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>글상세 입니다.1</p>
+<br>
+<table border="1">
+    <thead>
+    <tr>
+        <th>게시글 번호</th>
+        <th>글제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.title}"></td>
+        <td th:text="${board.author}"></td>
+        <td th:text="${#temporals.format(board.modifiedDate, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    <tr>
+        <td colspan="4" th:text="${board.content}"></td>
+    </tr>
+    </tbody>
+</table>
+<input type="hidden" id="id" placeholder="작성자" th:value="${board.id}"><br>
+<br>
+<a href="#" th:href="@{/board/boardUpdate/{id} (id=${board.id})}">수정</a>
+<input type="button" value="삭제" onclick="board.delete()">
+<script src="/js/board.js"></script>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

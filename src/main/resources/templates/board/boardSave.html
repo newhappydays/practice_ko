@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>글작성 입니다.1</p>
+<br>
+<input type="text" id="title" placeholder="작성자"><br>
+<input type="text" id="author" placeholder="제목"><br>
+<textarea id="content" placeholder="내용" cols="20" rows="10"></textarea><br>
+<input type="button" id="btn" value="작성" onclick="board.save()">
+
+<script src="/js/board.js"></script>
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>
